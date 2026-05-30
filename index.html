@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- ATELIER 子題型工具 內部版本 v3 -->
+<!-- ATELIER 子題型工具 內部版本 v4 -->
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
@@ -49,13 +49,13 @@ select:disabled{opacity:.4;}
 
 <div class="step" id="outstep" style="display:none">
   <span class="stepn">STEP 2</span>
-  <div class="lbl">這個主題底下全部素材＋子題型（Gemini 會通盤對照、一次選定）</div>
-  <div class="preview" id="preview"></div>
   <div class="out">
-    <div class="lbl">↓ 第二段提示詞（複製貼給 Gemini）</div>
-    <div class="box" id="prompt"></div>
+    <div class="lbl">↓ 第二段提示詞（一鍵複製，貼回同一個 Gemini）</div>
     <button class="copy" id="copybtn">複製第二段提示詞</button>
+    <div class="box" id="prompt"></div>
   </div>
+  <div class="lbl" style="margin-top:16px">（參考）這個主題底下全部素材＋子題型</div>
+  <div class="preview" id="preview"></div>
 </div>
 
 <div class="foot">ATELIER · ICS — 1310 子題型 · 262 素材</div>
@@ -90,7 +90,7 @@ tSel.onchange=()=>{
   p+='選擇理由：（為什麼這支片的做法最符合這個子題型的定義，一句話）\n\n';
   p+='若全部定義都不貼合，請填「都不貼合」並說明它最像哪一個、差在哪。';
   $('prompt').textContent=p;
-  $('outstep').style.display='block';
+  $('outstep').style.display='block';$('outstep').scrollIntoView({behavior:'smooth',block:'start'});
   const b=$('copybtn');b.textContent='複製第二段提示詞';b.classList.remove('copied');
 };
 $('copybtn').onclick=function(){
